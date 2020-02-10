@@ -8,7 +8,9 @@ import com.springredis.cacheservice.domain.model.Post;
 import com.springredis.cacheservice.domain.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PostServiceImpl implements PostService {
 
     @Autowired
@@ -19,7 +21,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post addPost(Post post) {
+    public Post savePost(Post post) {
         return repository.save(post);
     }
 
@@ -30,9 +32,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findTopPosts() {
-        List<Post> allPosts = (List<Post>) repository.findAll();
-        List<Post> topPosts = allPosts.stream().sorted(Comparator.comparingInt(Post::getLikes).reversed()).collect(Collectors.toList());
+    public List<Post> findTopPosts(int maxPosts) {
+        var allPosts = (List<Post>) repository.findAll();
+        var postsByLikes = allPosts.stream().sorted(Comparator.comparingInt(Post::getLikes).reversed()).collect(Collectors.toList());
+        var topPosts = postsByLikes.stream().limit(maxPosts).collect(Collectors.toList());
         return topPosts;
     }
 }

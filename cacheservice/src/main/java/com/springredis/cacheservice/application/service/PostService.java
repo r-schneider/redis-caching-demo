@@ -4,12 +4,9 @@ import java.util.List;
 
 import com.springredis.cacheservice.domain.model.Post;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public interface PostService {
 
-    Post addPost(Post post);
+    Post savePost(Post post);
     Post findPostById(String id);
-    List<Post> findTopPosts();
+    List<Post> findTopPosts(int maxPosts);
 }
