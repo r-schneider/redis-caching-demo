@@ -15,5 +15,5 @@ public class Post implements Serializable {
     private String image;
     private String content;
     private String author;
-    private int shares;
+    private int likes;
 }
