@@ -12,7 +12,6 @@ public class Post implements Serializable {
     private static final long serialVersionUID = 6972987864357291534L;
     private String id;
     private String title;
-    private String image;
     private String content;
     private String author;
     private int likes;

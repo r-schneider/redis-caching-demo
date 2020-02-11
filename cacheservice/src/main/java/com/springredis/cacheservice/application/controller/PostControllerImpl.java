@@ -2,17 +2,16 @@ package com.springredis.cacheservice.application.controller;
 
 import java.util.List;
 
+import com.springredis.cacheservice.application.service.PostService;
 import com.springredis.cacheservice.application.service.PostServiceImpl;
 import com.springredis.cacheservice.domain.model.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 public class PostControllerImpl implements PostController {
 
     @Autowired
-    PostServiceImpl service;
+    PostService service;
 
     public PostControllerImpl(PostServiceImpl service) {
         this.service = service;
@@ -32,5 +31,4 @@ public class PostControllerImpl implements PostController {
     public List<Post> getTopPosts() {
         return service.findTopPosts(5);
     }
-
 }
