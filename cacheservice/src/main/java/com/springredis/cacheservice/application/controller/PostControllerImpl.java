@@ -5,13 +5,11 @@ import java.util.List;
 import com.springredis.cacheservice.application.service.PostService;
 import com.springredis.cacheservice.domain.model.Post;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PostControllerImpl implements PostController {
 
-    @Autowired
     PostService service;
 
     public PostControllerImpl(PostService service) {
@@ -20,7 +18,7 @@ public class PostControllerImpl implements PostController {
 
     @Override
     public Post addPost(Post post) {
-        return this.service.savePost(post);
+        return (this.service.savePost(post) != null ) ? post : null;
     }
 
     @Override

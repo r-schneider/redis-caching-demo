@@ -44,9 +44,7 @@ public class PostRepositoryImpl implements PostRepository {
         simulateSlowService();
         Optional<Post> postById = null;
         for (Post post : posts) {
-            if (id == post.getId()) {
-                postById = Optional.of(post);
-            }
+            postById =  (id == post.getId()) ? Optional.of(post) : Optional.empty();
         }
         return postById;
     }
@@ -57,7 +55,8 @@ public class PostRepositoryImpl implements PostRepository {
         return posts;
     }
 
-    private void simulateSlowService() {
+    @Override
+    public void simulateSlowService() {
         try {
             Thread.sleep(3000L);
             System.out.println("CONNECTING TO DATABASE");

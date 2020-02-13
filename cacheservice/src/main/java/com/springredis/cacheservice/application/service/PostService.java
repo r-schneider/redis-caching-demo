@@ -11,4 +11,6 @@ public interface PostService {
     Post findPostById(int id);
 
     List<Post> findTopPosts(int maxPosts);
+
+    Boolean isValid(Post newEntry);
 }

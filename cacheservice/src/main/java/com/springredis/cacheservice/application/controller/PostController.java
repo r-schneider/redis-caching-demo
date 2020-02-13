@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping(path = "/posts", produces = MediaType.APPLICATION_JSON_VALUE)
 public interface PostController {
-    
+
     @PostMapping(value = "/add")
-    Post addPost(@RequestBody Post post); 
+    Post addPost(@RequestBody Post post);
 
     @GetMapping(value = "/{id}")
-    Post getPostById(@PathVariable int id); 
+    Post getPostById(@PathVariable int id);
 
     @GetMapping("/liked")
-    List<Post> getTopPosts(); 
+    List<Post> getTopPosts();
 }
