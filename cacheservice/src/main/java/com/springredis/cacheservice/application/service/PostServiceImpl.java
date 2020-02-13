@@ -8,6 +8,7 @@ import com.springredis.cacheservice.domain.model.Post;
 import com.springredis.cacheservice.domain.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,12 @@ public class PostServiceImpl implements PostService {
     @Autowired
     PostRepository repository;
 
-    public PostServiceImpl(PostRepository repository) {
+    @Autowired
+    CacheManager cacheManager;
+
+    public PostServiceImpl(PostRepository repository, CacheManager cacheManager) {
         this.repository = repository;
+        this.cacheManager = cacheManager;
     }
 
     @Override
