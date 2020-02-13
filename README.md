@@ -1,2 +1,2 @@
-# redis-caching-demo
-Redis caching with spring example
+# spring-redis-cache-demo
+Caching service making use of spring boot and redis
